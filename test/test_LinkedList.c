@@ -50,6 +50,17 @@ void test_element_arrayElement_print_and_value(){
 	list->length = 4;
 	print();
 }
-
+void test_LinkedList_head_tail_and_length_should_be_empty(){
+	//no data input and no value in the array element
+	LinkedList *list = createLinkedList();
+	Element *tempElem;
+	
+	tempElem = List_delete(list);
+	TEST_ASSERT_NULL(tempElem);
+	TEST_ASSERT_NULL(list->head);
+	TEST_ASSERT_NULL(list->tail);
+	TEST_ASSERT_EQUAL(0,list->length);
+	
+}
 
 
