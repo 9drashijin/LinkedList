@@ -62,5 +62,27 @@ void test_LinkedList_head_tail_and_length_should_be_empty(){
 	TEST_ASSERT_EQUAL(0,list->length);
 	
 }
+void test_LinkedList_delete(){
+	LinkedList *list = createLinkedList();
+	Element *tempElem;
+	
+	Element arrayElem[4] = {{.next = &arrayElem[1], .data = 1},
+							{.next = &arrayElem[2], .data = 2},
+							{.next = &arrayElem[3], .data = 3},
+							{.next = NULL, .data = 4}};
+	list->head = &arrayElem[0];
+	list->length = 4;
+	
+	tempElem = List_delete(list);
+	TEST_ASSERT_NOT_NULL(tempElem);
+	
+	tempElem = List_delete(list);
+	TEST_ASSERT_NULL(tempElem);
+	
+	tempElem = List_delete(list);
+	TEST_ASSERT_EQUAL(4,list->length);
+	printf("\n");
+	print();
+}
 
 
