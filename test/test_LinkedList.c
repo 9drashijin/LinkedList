@@ -1,11 +1,10 @@
 #include "unity.h"
 #include "LinkedList.h"
 
-//#define LinkedList *list = createLinkedList();
-
 void setUp(){}
 void tearDown(){}
 
+/*
 void test_createLinkedList_should_return_initialized_LinkedList_object(){
 	LinkedList *list;
 	
@@ -39,3 +38,18 @@ void test_no_test_but_playing_around(){
 	
 	dumpLinkedList(list);	
 }
+*/
+
+void test_element_arrayElement_print_and_value(){
+	LinkedList *list = createLinkedList();
+	Element arrayElem[4] = {{.next = &arrayElem[1], .data = 1},
+							{.next = &arrayElem[2], .data = 2},
+							{.next = &arrayElem[3], .data = 3},
+							{.next = NULL, .data = 4}};
+	list->head = &arrayElem[0];
+	list->length = 4;
+	print();
+}
+
+
+

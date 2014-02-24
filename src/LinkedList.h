@@ -12,6 +12,8 @@ typedef struct {
 	int length;
 }LinkedList;
 
-LinkedList *createLinkedList();
 
+LinkedList *createLinkedList();
+Element *List_delete(LinkedList *list);
+void print();
 #endif //__LINKED_LIST_H__
