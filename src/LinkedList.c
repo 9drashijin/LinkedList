@@ -3,46 +3,80 @@
 #include "LinkedList.h"
 //#include "CException.h"
 #include <stdio.h>
-LinkedList *list;
-Element *tempElem, *prev;
+Element *elem;
 
 LinkedList *createLinkedList(){
-	list = malloc(sizeof(LinkedList));
+	LinkedList *list = malloc(sizeof(LinkedList));
 	list->head = NULL;   //(Element *) 547455;
 	list->tail = NULL;   //(Element *) 547455;
 	list->length = 0; 
 	return list;
 }
 
-void print(){
+void print(){ 			// print test
+	LinkedList *list;
 	printf("head:%p , tail:%p\n",list->head,list->tail);
-	for(tempElem = list->head; tempElem != NULL ; tempElem = tempElem->next){
-		printf("data:%d , addr:%p\n",tempElem->data,tempElem);
+	for(elem = list->head; elem != NULL ; elem = elem->next){
+		printf("data:%d , addr:%p\n",elem->data,elem);
 	}
+	printf("length: %d\n",list->length);
 }
+/**
+	==============TEST FIXTURE===============
+	*****************************************
+			elem1	 elem2		elem3
+			 ____	  ____		 ____
+	head--->|next|-->|next|---->|next|---|
+			|____|	 |____|	|-->|____|   |
+			|data|	 |data|	|	|data|	 |
+			|    |	 |	  |	|	|	 |	 |
+			|____|	 |____|	|	|____|	NULL
+	tail---------------------	
+	*****************************************
+ 
+**/
 
-Element *List_delete(LinkedList *list){
-	tempElem = list->head;
+
+Element *List_delete(LinkedList *list , Element *elem){
 	
-	while(tempElem !=NULL)
-	{
-	if(tempElem->data == list->length)
-	{
-		if(tempElem==list->head){
-		list->head = tempElem->next;
-		free(tempElem);
-		return tempElem ;
+	if( list->head ==NULL && list->tail ==NULL ) 
+		return NULL;
+	
+	else if	( list->head == list->tail ){
+		list->head == NULL;
+		list->tail == NULL;
 		}
-		else{
-		prev->next = tempElem->next;
-		free(tempElem);
-		return tempElem;
-		}
+	while(elem !=NULL){
+		//for(elem = list->head ; elem!=NULL ; elem = elem->next){
+		 if(elem = list->head){ 		 //remove first
+			(list->head) = ((list->head)->next);
+			(list->tail) = (list->tail);
+			(list->tail)->next = NULL;
+			(list->length)--;
+			//free(elem);
+			return elem;
+			}
+		else if(elem == list->tail){ 	 // remove last
+			*(list->tail)--;
+			(list->head) = (list->head);
+			(list->tail)->next = NULL;
+			(list->length)--;
+			//free(elem);
+			return elem;
+			}
+		else{							 //remove middle
+			Element *previous;			 // *previous pointer are temporary
+			previous = elem--;			 // Previous element = current element -1
+			previous->next = (elem->next);
+			(list->head) = (list->head);
+			(list->tail) = (list->tail);
+			(list->tail)->next = NULL;
+			(list->length)--;
+			//free(elem);
+			return elem;
+		}	
+		//}
 	}
-	else{
-	prev = tempElem;
-	tempElem = tempElem-> next;
-	}
-	}
-	return 0;
+
 }
+	

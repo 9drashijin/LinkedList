@@ -4,85 +4,50 @@
 void setUp(){}
 void tearDown(){}
 
-/*
-void test_createLinkedList_should_return_initialized_LinkedList_object(){
-	LinkedList *list;
+// TEST to Print the value and array
+// void test_element_arrayElement_print_and_value(){
+	// LinkedList *list = createLinkedList();
+	// Element arrayElem[] = {{.next = &arrayElem[1], .data = 111},
+							// {.next = &arrayElem[2], .data = 222},
+							// {.next = &arrayElem[3], .data = 333},
+							// {.next = &arrayElem[4], .data = 444},
+							// {.next = NULL, .data = 555}};
+	// list->head = &arrayElem[0];
+	//list->tail = &arrayElem[4];
+	// list->length = 5;
+	// print();
+// }
+void test_LinkedList_is_created_and_should_be_empty(){
+	LinkedList *list = createLinkedList();
 	
-	list = createLinkedList();
 	TEST_ASSERT_NOT_NULL(list);
 	TEST_ASSERT_NULL(list->head);
 	TEST_ASSERT_NULL(list->tail);
 	TEST_ASSERT_EQUAL(0,list->length);
+	
 }
-
-void dumpLinkedList(LinkedList *list){
+void test_LinkedList_delete_middle_element(){
+	LinkedList *list = createLinkedList();
 	Element *elem;
-	printf("head:%d , tail:%p\n",list->head,list->tail);
-	for(elem = list->head; elem != NULL ; elem = elem->next){
-		printf("data:%d , addr:%p\n",elem->data,elem);
-	}
 	
-}
-
-void test_no_test_but_playing_around(){
-	LinkedList *list = createLinkedList(); //dynamic add (here)
-	//Element arrayElem[3] = {{&arrayElem[1],1},
-	//						{&arrayElem[2],2},
-	//						{NULL,3}};
-	Element arrayElem[3] = {{.next = &arrayElem[1], .data = 1},
-							{.next = &arrayElem[2], .data = 2},
-							{.next = NULL, .data = 3}};
-	//LinkedList dlist = {NULL , NULL , 0}; // static add (same as above dynamic add)
+	Element arrayElem[] = {{.next = &arrayElem[1], .data = 111},
+							{.next = &arrayElem[2], .data = 222},
+							{.next = &arrayElem[3], .data = 333},
+							{.next = &arrayElem[4], .data = 444},
+							{.next = NULL, .data = 555}};
+	list->length = 5;
 	list->head = &arrayElem[0];
-	list->length = 3;
-	
-	dumpLinkedList(list);	
-}
-*/
+	list->tail = &arrayElem[4];
+//	print(); //to test and c the address and data
 
-void test_element_arrayElement_print_and_value(){
-	LinkedList *list = createLinkedList();
-	Element arrayElem[4] = {{.next = &arrayElem[1], .data = 1},
-							{.next = &arrayElem[2], .data = 2},
-							{.next = &arrayElem[3], .data = 3},
-							{.next = NULL, .data = 4}};
-	list->head = &arrayElem[0];
-	list->length = 4;
-	print();
-}
-void test_LinkedList_head_tail_and_length_should_be_empty(){
-	//no data input and no value in the array element
-	LinkedList *list = createLinkedList();
-	Element *tempElem;
+	//=====================================================
+	//BASIC TEST (BEFORE REMOVE) : TESTING ARRAY and DATA
+	//=====================================================
 	
-	tempElem = List_delete(list);
-	TEST_ASSERT_NULL(tempElem);
-	TEST_ASSERT_NULL(list->head);
-	TEST_ASSERT_NULL(list->tail);
-	TEST_ASSERT_EQUAL(0,list->length);
+	TEST_ASSERT_NOT_NULL(list->head); //head have value 
+	TEST_ASSERT_NOT_NULL(list->tail); //tail have value
 	
-}
-void test_LinkedList_delete(){
-	LinkedList *list = createLinkedList();
-	Element *tempElem;
-	
-	Element arrayElem[4] = {{.next = &arrayElem[1], .data = 1},
-							{.next = &arrayElem[2], .data = 2},
-							{.next = &arrayElem[3], .data = 3},
-							{.next = NULL, .data = 4}};
-	list->head = &arrayElem[0];
-	list->length = 4;
-	
-	tempElem = List_delete(list);
-	TEST_ASSERT_NOT_NULL(tempElem);
-	
-	tempElem = List_delete(list);
-	TEST_ASSERT_NULL(tempElem);
-	
-	tempElem = List_delete(list);
-	TEST_ASSERT_EQUAL(4,list->length);
-	printf("\n");
-	print();
-}
 
+//	print(); //to test and c the address and data
+}
 
