@@ -65,6 +65,16 @@ Element *List_delete(LinkedList *list , Element *elem){
 			return elem;
 			}
 		else{							 //remove middle
+		/**	
+			======TEST FIXTURE=======================================================
+			*************************************************************************
+			|1|  |2|  |3|  |4|  |5|		if there is 5 element
+			|1|  |2|  |X|  |4|  |5|		remove element 3
+			|1|  |2|<-|X|  |4|  |5|		previous element is 2
+			|1|  |2|------>|4|  |5|		element 2 -> next = removed element -> next
+			*************************************************************************
+		**/
+		
 			Element *previous;			 // *previous pointer are temporary
 			previous = elem--;			 // Previous element = current element -1
 			previous->next = (elem->next);
