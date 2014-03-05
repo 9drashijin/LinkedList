@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <malloc.h>
 #include "LinkedList.h"
-//#include "CException.h"
-#include <stdio.h>
+
 Element *elem;
 
 LinkedList *createLinkedList(){
@@ -24,44 +23,30 @@ void print(){ 			// print test
 
 Element *List_remove(LinkedList *list , Element *elem){
 	
-	if( list->head ==NULL && list->tail ==NULL ) 
+	if( list->head ==NULL && list->tail ==NULL ) //both NULL ? return NULL
 		return NULL;
 	
-	else if	( list->head == list->tail ){
+	if	( list->head == list->tail ){ //head equal tail ? YES> both NULL
 		list->head == NULL;
 		list->tail == NULL;
-		}
-	while(elem !=NULL){
-		//for(elem = list->head ; elem!=NULL ; elem = elem->next){
-		 if(elem = list->head){ 		 //remove first
-			(list->head) = ((list->head)->next);
-			(list->tail) = (list->tail);
-			(list->tail)->next = NULL;
-			(list->length)--;
-			//free(elem);
-			return elem;
-			}
-		else if(elem == list->tail){ 	 // remove last
-			*(list->tail)--;
-			(list->head) = (list->head);
-			(list->tail)->next = NULL;
-			(list->length)--;
-			//free(elem);
-			return elem;
-			}
-		else{							 //remove middle
-			Element *previous;			 // *previous pointer are temporary
-			previous = elem--;			 // Previous element = current element -1
-			previous->next = (elem->next);
-			(list->head) = (list->head);
-			(list->tail) = (list->tail);
-			(list->tail)->next = NULL;
-			(list->length)--;
-			//free(elem);
-			return elem;
-		}	
-		//}
 	}
-
+	
+	if(elem == list->head){ 		 //remove first
+		(list->head) = ((list->head)->next);
+	}
+		
+	else if(list->tail > list->head){// remove last
+		*(list->tail)--;
+	}
+	else{							 //remove middle
+		Element *previous;			 // *previous pointer are temporary
+		previous = elem--;			 // Previous element = current element -1
+		previous->next = (elem->next);
+		elem = previous->next;
+	}
+	if(list->length > 0){			//is length ? 0 : length-1
+		list->length = (list->length) - 1;
+	}
+	return elem;
 }
 	
