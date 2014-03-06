@@ -49,9 +49,8 @@ void test_LinkedList_remove_middle_element_second_element(){
 	list->head = &arrayElem[0];
 	list->tail = &arrayElem[3];
 	list->length = 4;
-	//print(); //to test and c the address and data
+
 	element = List_remove(list, &arrayElem[1]);
-	//print();
 	
 	TEST_ASSERT_EQUAL_PTR(&arrayElem[0],list->head); // list head point to 1st element
 	TEST_ASSERT_EQUAL_PTR(&arrayElem[2],list->tail); // list tail pointing to 2nd last element
@@ -78,9 +77,8 @@ void test_LinkedList_remove_middle_element_third_element(){
 	list->head = &arrayElem[0];
 	list->tail = &arrayElem[3];
 	list->length = 4;
-	//print();
+
 	element = List_remove(list, &arrayElem[2]);
-	//printf("element nOW %p\n",element);
 	
 	TEST_ASSERT_NOT_NULL(element);
 	TEST_ASSERT_NOT_NULL(list->head); //head have value 
@@ -117,9 +115,8 @@ void test_LinkedList_remove_first_element(){
 	list->head = &arrayElem[0];
 	list->tail = &arrayElem[3];
 	list->length = 4;
-	//print(); //to test and c the address and data
+
 	element = List_remove(list, &arrayElem[0]);
-	//print(); //to test and c the address and data
 
 	TEST_ASSERT_NOT_NULL(list->head); //head have value
 	TEST_ASSERT_NOT_NULL(list->tail); //tail have value
@@ -154,9 +151,8 @@ void test_LinkedList_remove_last_element(){
 	list->head = &arrayElem[0];
 	list->tail = &arrayElem[3];
 	list->length = 4;
-	//print(); //to test and c the address and data
+
 	element = List_remove(list, &arrayElem[3]);
-	//print();
 	
 	TEST_ASSERT_NOT_NULL(list->head); //head have value
 	TEST_ASSERT_NOT_NULL(list->tail); //tail have value
@@ -191,9 +187,8 @@ void test_LinkedList_remove_with_5_element(){
 	list->head = &arrayElem[0];
 	list->tail = &arrayElem[4];
 	list->length = 5;
-	//print(); //to test and c the address and data
+	
 	element = List_remove(list, &arrayElem[4]);
-	//print();
 	
 	TEST_ASSERT_EQUAL_PTR(&arrayElem[0],list->head); // list head point to 1st element
 	TEST_ASSERT_EQUAL_PTR(&arrayElem[3],list->tail); // list tail pointing to 2nd last element

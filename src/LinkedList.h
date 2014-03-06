@@ -15,5 +15,4 @@ typedef struct {
 
 LinkedList *createLinkedList();
 Element *List_remove(LinkedList *list, Element *elem);
-void print();
 #endif //__LINKED_LIST_H__

@@ -2,23 +2,12 @@
 #include <malloc.h>
 #include "LinkedList.h"
 
-Element *elem;
-
 LinkedList *createLinkedList(){
 	LinkedList *list = malloc(sizeof(LinkedList));
 	list->head = NULL;   //(Element *) 547455;
 	list->tail = NULL;   //(Element *) 547455;
 	list->length = 0; 
 	return list;
-}
-
-void print(){ 			// print test
-	LinkedList *list;
-	printf("head:%p , tail:%p\n",list->head,list->tail);
-	for(elem = list->head; elem != NULL ; elem = elem->next){
-		printf("data:%d , addr:%p\n",elem->data,elem);
-	}
-	printf("length: %d\n",list->length);
 }
 
 Element *List_remove(LinkedList *list , Element *elem){
